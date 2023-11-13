@@ -1,19 +1,21 @@
-import Player from '../models/Player.js';
-import Obstacle from '../models/Obstacle.js';
-import Question from '../models/Question.js';
-import Background from '../models/Background.js';
+import Player from "../models/Player.js";
+import Obstacle from "../models/Obstacle.js";
+import Question from "../models/Question.js";
+import Background from "../models/Background.js";
 
 let player;
 
 window.addEventListener("keydown", (event) => {
-    player = new Player();
+  player = new Player();
 
-    switch (event.key) {
-        case 'a':
-            player.draw();
-            break;
-
-        default:
-            break;
-    }
+  switch (event.key) {
+    case "a":
+      player.move("left");
+      break;
+    case "d":
+      player.move("right");
+    default:
+      break;
+  }
 });
+player.draw();
