@@ -4,13 +4,14 @@ import Question from "../models/Question.js";
 import Background from "../models/Background.js";
 
 let player;
+player = new Player();
 
+player.draw();
 window.addEventListener("keydown", (event) => {
-  player = new Player();
-
+ 
   switch (event.key) {
-    case "a":
-      player.move("left");
+    case 'a':
+      player.jump();
       break;
     case "d":
       player.move("right");
@@ -18,4 +19,3 @@ window.addEventListener("keydown", (event) => {
       break;
   }
 });
-player.draw();

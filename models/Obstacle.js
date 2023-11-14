@@ -7,12 +7,7 @@ export default class Obstacle{
         this.PositionY = this.context.heigth;
     }
 
-    generateNumbers(){
-        this.number = Math.floor(Math.random() * 10);
-        console.log(this.number);
-    }
-
     draw(){
-        console.log("asasaa");
+        
     }
 }
