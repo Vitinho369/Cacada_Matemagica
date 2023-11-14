@@ -25,4 +25,7 @@ export default class Question {
         return this.number1 / this.number2;
     }
   }
+  generateAccount() {
+    return `${this.num1} ${this.operacao} ${this.num2}`;
+  }
 }
