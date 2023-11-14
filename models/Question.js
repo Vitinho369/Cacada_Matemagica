@@ -6,11 +6,11 @@ export default class Question {
     this.result = this.generateResult();
   }
   generateNumber() {
-    return Math.floor(Math.random() * (100 - 1 + 1) + 1);
+    return Math.floor(Math.random() * (20 - 1 + 1) + 1);
   }
   generateOperation() {
     let operations = ["+", "-", "*", "/"];
-    let operation = operations[Math.floor(Math.random() * operacoes.length)];
+    let operation = operations[Math.floor(Math.random() * operations.length)];
     return operation;
   }
   generateResult() {
@@ -24,5 +24,13 @@ export default class Question {
       case "/":
         return this.number1 / this.number2;
     }
+  }
+
+  writeOperation() {
+    return this.number1 + this.operation + this.number2
+  }
+
+  getResult() {
+    return this.result;
   }
 }

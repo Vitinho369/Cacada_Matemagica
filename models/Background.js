@@ -3,7 +3,7 @@ export default class Background {
         this.canvas = document.getElementById("Jogo");
         this.context = this.canvas.getContext("2d");
         this.width = this.context.width;
-        this.heigth = this.context.heigth;
+        this.height = this.context.height;
         this.imagePlayer = new Image();
         this.imagePlayer.src = "../assets/player.png";
     }
