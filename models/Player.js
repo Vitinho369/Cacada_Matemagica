@@ -6,10 +6,12 @@ export default class Player {
     this.imagePlayer.src = "../assets/personR_resized.png";
     this.widthImage = this.imagePlayer.width;
     this.heightImage = this.imagePlayer.height;
-    this.widthPerson = this.widthImage / 5;
+    this.widthPerson = this.widthImage /5;
+    this.heigthPerson = this.heightImage/2;
     this.axesX = 0;
     this.axesY = 70;
     this.speed = 5;
+    this.gravity = 4;
     this.i = 0;
   }
 
@@ -19,6 +21,11 @@ export default class Player {
 
   getAxesY() {
     return this.axesY;
+  }
+
+  reinitial(){
+    this.axesX = 0;
+    this.axesY = 70;
   }
 
   draw() {
@@ -33,7 +40,7 @@ export default class Player {
         this.i * this.widthPerson,
         0,
         this.widthPerson+1,
-        310,
+        this.heigthPerson,
         this.axesX,
         this.axesY,
         40,
@@ -50,13 +57,19 @@ export default class Player {
 
   update() {
     // requestAnimationFrame(this.update());
+
+      if(this.axesY < 70){
+        // this.axesY += this.gravity;
+      }
     this.draw();
   }
-  animate(obstacles, axesX, axesY){ 
-    // this.context.clearRect(0,0,this.canvas.width, this.canvas.height);
-    this.draw();
-    window.requestAnimationFrame(()=>this.animate);
-  }
+  // animate(){ 
+  //   // this.context.clearRect(0,0,this.canvas.width, this.canvas.height);
+   
+  //   requestAnimationFrame(()=>this.animate);
+  //   console.log(this.axesY);
+  //   this.update();
+  // }
 
   jump() {
     this.axesY -= 10;
@@ -83,6 +96,26 @@ export default class Player {
           this.axesY += this.speed;
         break;
     }
-    this.draw();
+    this.update();
+  }
+
+  
+  collide(obstacle) {
+
+    // console.log("player.getAxesY(): " + player.getAxesY());
+    // console.log("player.getAxeX(): " + player.getAxesX());
+    // console.log("(this.axesY + this.height): " + (this.axesX + 30));
+    // console.log("obstacle.getAxesX() + obstacle.getWidth(): " +(obstacle.getAxesX() + obstacle.getWidth()));
+    // console.log("(this.axesX + this.width): " + (this.axesX + this.width));
+    // console.log(this.axesX + 10 >= obstacle.getAxesX() && 
+    // (this.axesX + 10) <= obstacle.getAxesX() + obstacle.getWidth());
+
+    if (this.axesX+ 15 >= obstacle.getAxesX() && 
+    (this.axesX + 15) <= obstacle.getAxesX() + obstacle.getWidth()
+    && this.axesY <= obstacle.getAxesY() && this.axesY+40 >= obstacle.getAxesY()) {
+          console.log("collide");
+        return true;
+    }
+    return false;
   }
 }

@@ -6,7 +6,7 @@ export default class Question {
     this.result = this.generateResult();
   }
   generateNumber() {
-    return Math.floor(Math.random() * (20 - 1 + 1) + 1);
+    return parseInt(Math.random() * (20 - 1 + 1) + 1);
   }
   generateOperation() {
     let operations = ["+", "-", "*", "/"];
@@ -22,12 +22,12 @@ export default class Question {
       case "*":
         return this.number1 * this.number2;
       case "/":
-        return this.number1 / this.number2;
+        return parseInt(this.number1 / this.number2);
     }
   }
 
   writeOperation() {
-    return this.number1 + this.operation + this.number2
+    return this.number1 + this.operation + this.number2;
   }
 
   getResult() {
