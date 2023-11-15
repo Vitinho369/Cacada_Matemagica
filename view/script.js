@@ -10,25 +10,23 @@ let context = canvas.getContext("2d");
 let nextLevel = true;
 let pontuation = -1;
 
-
 const defineOperation = () => {
   let operationProblem = document.getElementById("operations");
-  operationProblem.innerText = "Qual o resultado da operação: " + question.writeOperation();
+  operationProblem.innerText =
+    "Qual o resultado da operação: " + question.writeOperation();
 };
 
 const generateIndexValue = () => {
   return Math.floor(Math.random() * 3);
 };
 
-
-const reinitialGame = ()=>{
-    pontuation++;
-    player.reinitial(); 
-    console.log(pontuation);
+const reinitialGame = () => {
+  pontuation++;
+  player.reinitial();
+  console.log(pontuation);
 };
 
-
-const drawObstacles = ()=>{
+const drawObstacles = () => {
   let positionObst = 90;
   let indexObstValue = generateIndexValue();
   obstacles.forEach((obsT, index) => {
@@ -47,31 +45,27 @@ const drawObstacles = ()=>{
 };
 
 const game = () => {
-    obstacles.forEach((obsT)=>{
-        nextLevel = player.collide(obsT);
+  obstacles.forEach((obsT) => {
+    nextLevel = player.collide(obsT);
 
-        if(nextLevel)
-          reinitialGame();
+    if (nextLevel) reinitialGame();
 
-        drawObstacles();
-        obsT.update();
-    });
+    drawObstacles();
+    obsT.update();
+  });
 };
 
-const animate = ()=>{
+const animate = () => {
   requestAnimationFrame(animate);
-  context.fillRect(0,0,context.width, context.heigth);
+  context.fillRect(0, 0, context.width, context.heigth);
   player.update();
   game();
-}
-
+};
 
 window.addEventListener("keydown", (event) => {
-
   switch (event.key) {
     case "ArrowUp":
-      // player.jump();
-      player.move('up');
+      player.jump();
       break;
     case "ArrowRight":
       player.move("right");
@@ -85,7 +79,6 @@ window.addEventListener("keydown", (event) => {
       break;
   }
 });
-
 
 defineOperation();
 animate();
