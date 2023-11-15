@@ -19,11 +19,17 @@ export default class Obstacle {
         this.context.fillText(number, axesX, axesY + 15);
     }
 
-    draw(axesX, axesY) {
+    draw() {
+        this.context.fillStyle = "red";
+        this.context.clearRect(this.axesX, this.axesY, this.width, this.height);
+    }
+    
+    animate(axesX, axesY){
         this.axesX = axesX;
         this.axesY = axesY;
-        this.context.fillStyle = "red";
-        this.context.fillRect(this.axesX, this.axesY, this.width, this.height);
+        window.requestAnimationFrame(()=>this.animate);
+        this.context.clearRect(0,0,this.canvas.width, this.canvas.height);
+        this.draw();
     }
 
     collide(player) {
@@ -36,8 +42,13 @@ export default class Obstacle {
             console.log("collide Y");
         }
 
-        if (player.getAxesX() >= this.axesX && player.getAxesX() <= (this.axesX + this.width)) {
-            console.log("collide X");
+        if (this.axesX + this.width >= player.getAxesX() && 
+            player.getAxesX() <= (this.axesX + this.width)
+            && (this.axesY + this.height) >= player.getAxesY() && 
+            player.getAxesY() <= (this.axesY + this.height)) {
+
+            console.log("collide");
         }
+
     }
 }

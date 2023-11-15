@@ -1,7 +1,6 @@
 import Player from "../models/Player.js";
 import Obstacle from "../models/Obstacle.js";
 import Question from "../models/Question.js";
-import Background from "../models/Background.js";
 
 let player = new Player();
 let obstacles = [new Obstacle(), new Obstacle(), new Obstacle()];
@@ -18,12 +17,11 @@ const generateIndexValue = () => {
 
 let nextLevel = true;
 const game = () => {
-  setInterval(() => {
     let positionObst = 90;
     let indexObstValue = generateIndexValue();
 
     obstacles.forEach((obsT, index) => {
-      obsT.draw(positionObst, 110);
+      obsT.animate(positionObst, 110);
       obsT.collide(player);
 
       if (nextLevel) {
@@ -36,14 +34,12 @@ const game = () => {
 
       positionObst += 40;
     });
-
-  }, 200);
 };
 
 defineOperation();
 game();
 
-player.update();
+player.animate();
 
 window.addEventListener("keydown", (event) => {
 

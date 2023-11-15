@@ -22,16 +22,17 @@ export default class Player {
   }
 
   draw() {
-    // this.imagePlayer.onload = () => {
+    this.imagePlayer.onload = () => {
     // for(let i=0; i < 5;i++){
 
     setInterval(() => {
-      // this.context.clearRect(this.axesX, this.axesY, 40, 60);
+      // this.context.clearRect(this.axesX-1, this.axesY, 40, 60);
+      this.context.clearRect(0,0,this.canvas.width, this.canvas.height);
       this.context.drawImage(
         this.imagePlayer,
         this.i * this.widthPerson,
         0,
-        this.widthPerson,
+        this.widthPerson+1,
         310,
         this.axesX,
         this.axesY,
@@ -42,43 +43,46 @@ export default class Player {
       if (this.i >= 5) {
         this.i = 0;
       }
-    }, 200);
+    }, 100);
     // }
-    // }; 
+    }; 
+  }
 
-    // requestAnimationFrame(this.draw());
+  update() {
+    // requestAnimationFrame(this.update());
+    this.draw();
+  }
+  animate(obstacles, axesX, axesY){ 
+    // this.context.clearRect(0,0,this.canvas.width, this.canvas.height);
+    this.draw();
+    window.requestAnimationFrame(()=>this.animate);
   }
 
   jump() {
-    this.context.clearRect(this.axesX, this.axesY, 40, 60);
     this.axesY -= 10;
   }
 
   move(moviment) {
-    this.context.clearRect(this.axesX, this.axesY, 40, 60);
+    // this.context.clearRect(this.axesX, this.axesY, 40, 60);
     switch (moviment) {
 
       case 'left':
-        this.axesX -= 5;
+        this.axesX -= this.speed;
         break;
 
       case 'right':
-        this.axesX += 5;
+        this.axesX += this.speed;
         break;
 
       case 'up':
-        this.axesY -= 5;
+        this.axesY -= this.speed;
         break;
 
       case 'down':
-        this.axesY += 5;
+        if(this.axesY < 70)
+          this.axesY += this.speed;
         break;
     }
-  }
-
-
-  update() {
-    // requestAnimationFrame(this.update());
     this.draw();
   }
 }
