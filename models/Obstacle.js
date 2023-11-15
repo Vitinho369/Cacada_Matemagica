@@ -27,11 +27,16 @@ export default class Obstacle {
     }
 
     collide(player) {
-        if (player.getAxesY() > this.axesY && player.getAxesY() < (this.axesY + this.height)) {
+
+        // console.log("player.getAxesY(): " + player.getAxesY());
+        // console.log("player.getAxeX(): " + player.getAxesX());
+        // console.log("(this.axesY + this.height): " + (this.axesY + this.height));
+        // console.log("(this.axesX + this.width): " + (this.axesX + this.width));
+        if (player.getAxesY() >= this.axesY && player.getAxesY() <= (this.axesY + this.height)) {
             console.log("collide Y");
         }
 
-        if (player.getAxesX() > this.axesX && player.getAxesX() < (this.axesX + this.width)) {
+        if (player.getAxesX() >= this.axesX && player.getAxesX() <= (this.axesX + this.width)) {
             console.log("collide X");
         }
     }

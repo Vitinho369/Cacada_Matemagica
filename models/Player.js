@@ -26,7 +26,7 @@ export default class Player {
     // for(let i=0; i < 5;i++){
 
     setInterval(() => {
-      this.context.clearRect(this.axesX, this.axesY, 40, 60);
+      // this.context.clearRect(this.axesX, this.axesY, 40, 60);
       this.context.drawImage(
         this.imagePlayer,
         this.i * this.widthPerson,

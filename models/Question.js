@@ -25,10 +25,6 @@ export default class Question {
         return this.number1 / this.number2;
     }
   }
-<<<<<<< HEAD
-  generateAccount() {
-    return `${this.num1} ${this.operacao} ${this.num2}`;
-=======
 
   writeOperation() {
     return this.number1 + this.operation + this.number2
@@ -36,6 +32,5 @@ export default class Question {
 
   getResult() {
     return this.result;
->>>>>>> bce55f7e41ae6b3a2ec64f8662ffae75eb1822f0
   }
 }
