@@ -28,6 +28,7 @@ export default class Question {
 
   writeOperation() {
     return this.number1 + this.operation + this.number2;
+    // return `${this.number1} ${this.operation} ${this.number2}`;
   }
 
   getResult() {
