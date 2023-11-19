@@ -1,11 +1,11 @@
 import Player from "../models/Player.js";
-import Obstacle from "../models/Obstacle.js";
+import Obstacle from "../models/Coin.js";
 import Question from "../models/Question.js";
 
 let player = new Player();
 let obstacles = [new Obstacle(), new Obstacle(), new Obstacle()];
 let question = new Question();
-let canvas = document.getElementById("Jogo");
+let canvas = document.getElementById("game");
 let context = canvas.getContext("2d");
 let nextLevel = true;
 let pontuation = -1;

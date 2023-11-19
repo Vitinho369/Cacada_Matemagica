@@ -13,11 +13,38 @@ export default class Question {
     let operation = operations[Math.floor(Math.random() * operations.length)];
     return operation;
   }
+
+  verifyResult(operation){
+    switch(operation){
+      case "+":
+        while((this.number1 + this.number2) > 100){
+          this.number1 = this.generateNumber();
+          this.number2 = this.generateNumber();
+        }
+      case "-": 
+      while(this.number1 < this.number2){
+        this.number1 = this.generateNumber();
+        this.number2 = this.generateNumber();
+      }
+      case "*":
+        while((this.number1 * this.number2) > 100){
+          this.number1 = this.generateNumber();
+          this.number2 = this.generateNumber();
+        }
+      case "/":
+        while(this.number1 < this.number2){
+          this.number1 = this.generateNumber();
+          this.number2 = this.generateNumber();
+        }
+    }
+  }
+
   generateResult() {
+    this.verifyResult(this.operation);
     switch (this.operation) {
       case "+":
         return this.number1 + this.number2;
-      case "-":
+      case "-": 
         return this.number1 - this.number2;
       case "*":
         return this.number1 * this.number2;

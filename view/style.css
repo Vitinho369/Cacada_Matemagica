@@ -1,20 +1,51 @@
 body{
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column; 
   align-items: center;
-  background-color: burlywood;
+  margin: 0;
+  padding: 0;
+  /* background-color: burlywood; */
   font-family: sans-serif;
   font-weight: bold;
   font-size: 1.2rem;
+  line-height: 0.5rem;
+  color: white;
+  z-index: 0;
+  background: url('../assets/background.jpg') repeat-x;
+  background-size: cover;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
-#Jogo {
-  width: 800px;
-  height: 450px;
-  border: solid 1px black;
-  background: url('../assets/ORS97Z0.jpg');
-  background-size: 600px 500px;
-  border-radius: 5px;
+#game {
+  z-index: 1;
+  width: 50rem;
+  height: 28.125rem;   
+  border: solid 0.0625rem black;
+  background: url('../assets/background.jpg') repeat-x;
+  background-size: 37.5rem 31.25rem;
+  border-radius: 0.3125rem;
+  animation: animationGame infinite linear;
+  animation-duration: 4s;
+}
+
+@keyframes animationGame {
+  to {
+    background-position: 0 0;
+  }
+  from {
+    background-position: 100% 0;
+  }
+}
+
+
+.imageBack{
+  position: fixed;
+  z-index: -1;
+  background-color: black;
+  opacity: 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  min-width: 100vw;
 }
