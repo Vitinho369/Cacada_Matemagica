@@ -24,6 +24,8 @@ const reinitialGame = () => {
   pontuation++;
   player.reinitial();
   console.log(pontuation);
+  question = new Question();
+  defineOperation();
 };
 
 const drawObstacles = () => {
@@ -45,12 +47,12 @@ const drawObstacles = () => {
 };
 
 const game = () => {
+  drawObstacles();
   obstacles.forEach((obsT) => {
     nextLevel = player.collide(obsT);
 
     if (nextLevel) reinitialGame();
 
-    drawObstacles();
     obsT.update();
   });
 };
