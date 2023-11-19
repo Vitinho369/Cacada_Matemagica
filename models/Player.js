@@ -11,7 +11,7 @@ export default class Player {
     this.gravity = 1;
     this.i = 0;
     this.imagePlayer = new Image();
-    this.imagePlayer.src = "../assets/personR.png";
+    this.imagePlayer.src = "../assets/personR2.png";
     this.widthImage = this.imagePlayer.width;
     this.heightImage = this.imagePlayer.height;
     this.widthPerson = this.widthImage / 5;
@@ -31,29 +31,31 @@ export default class Player {
     this.axesY = 70;
   }
 
-  erroDraw(){
-     // setTimeout(() => {
 
-     if(i%2==0){
-     this.draw();
-     }else{
-      this.context.drawImage(
-        this.imagePlayer,
-        10* this.widthPerson,
-        0,
-        this.widthPerson + 1,
-        this.heigthPerson,
-        this.axesX,
-        this.axesY,
-        40,
-        60
-      );
-     }
+  draw() {
+    // this.imagePlayer.onload = () => {
+      // for(let i=0; i < 5;i++){
+        
+        // setTimeout(() => {
+        this.context.drawImage(
+          this.imagePlayer,
+          (this.i)* this.widthPerson,
+          0,
+          this.widthPerson + 1,
+          this.heigthPerson,
+          this.axesX,
+          this.axesY,
+          40,
+          60
+        );
 
-      this.i++;
-      if (this.i >= 5) {
-        this.i = 0;
-      }
+        this.i++;
+        if (this.i >= 5) {
+          this.i = 0;
+        }
+      // }, 100);
+      // }
+    // };
   }
 
   update() {
