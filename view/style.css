@@ -22,11 +22,11 @@ body{
   width: 50rem;
   height: 28.125rem;   
   border: solid 0.0625rem black;
-  background: url('../assets/background.jpg') repeat-x;
-  background-size: 37.5rem 31.25rem;
+  /* background: url('../assets/background.jpg') repeat-x;
+  background-size: 37.5rem 31.25rem; */
   border-radius: 0.3125rem;
-  animation: animationGame infinite linear;
-  animation-duration: 4s;
+  /* animation: animationGame infinite linear;
+  animation-duration: 4s; */
 }
 
 @keyframes animationGame {

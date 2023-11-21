@@ -10,7 +10,8 @@ export default class Question {
   }
   generateOperation() {
     let operations = ["+", "-", "*", "/"];
-    let operation = operations[Math.floor(Math.random() * operations.length)];
+    // let operation = operations[Math.floor(Math.random() * operations.length)];
+    let operation = "*";
     return operation;
   }
 

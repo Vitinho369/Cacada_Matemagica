@@ -12,10 +12,10 @@ export default class Player {
     this.i = 0;
     this.imagePlayer = new Image();
     this.imagePlayer.src = "../assets/personR2.png";
-    this.widthImage = this.imagePlayer.width;
-    this.heightImage = this.imagePlayer.height;
-    this.widthPerson = this.widthImage / 5;
-    this.heigthPerson = this.heightImage / 2;
+    // this.widthImage = this.imagePlayer.width;
+    // this.heightImage = this.imagePlayer.height;
+    // this.widthPerson = this.widthImage / 5;
+    // this.heigthPerson = this.heightImage / 2;
   }
 
   getAxesX() {
@@ -33,29 +33,22 @@ export default class Player {
 
 
   draw() {
-    // this.imagePlayer.onload = () => {
-      // for(let i=0; i < 5;i++){
-        
-        // setTimeout(() => {
         this.context.drawImage(
           this.imagePlayer,
-          (this.i)* this.widthPerson,
+          (this.i)* (this.imagePlayer.width/5),
           0,
-          this.widthPerson + 1,
-          this.heigthPerson,
+          (this.imagePlayer.width/5),
+          this.imagePlayer.height/2,
           this.axesX,
           this.axesY,
           40,
           60
         );
-
+        
         this.i++;
         if (this.i >= 5) {
           this.i = 0;
         }
-      // }, 100);
-      // }
-    // };
   }
 
   update() {
@@ -101,8 +94,8 @@ export default class Player {
   }
   collide(obstacle) {
     if (
-      this.axesX + 15 >= obstacle.getAxesX() &&
-      this.axesX + 15 <= obstacle.getAxesX() + obstacle.getWidth() &&
+      this.axesX + 25 >= obstacle.getAxesX() &&
+      this.axesX + 25 <= obstacle.getAxesX() + obstacle.getWidth() &&
       this.axesY <= 25 &&
       this.axesY + 40 >= 25
     ) {
