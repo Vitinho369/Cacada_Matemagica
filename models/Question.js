@@ -10,8 +10,7 @@ export default class Question {
   }
   generateOperation() {
     let operations = ["+", "-", "*", "/"];
-    // let operation = operations[Math.floor(Math.random() * operations.length)];
-    let operation = "*";
+    let operation = operations[Math.floor(Math.random() * operations.length)];
     return operation;
   }
 
@@ -56,7 +55,6 @@ export default class Question {
 
   writeOperation() {
     return this.number1 + this.operation + this.number2;
-    // return `${this.number1} ${this.operation} ${this.number2}`;
   }
 
   getResult() {

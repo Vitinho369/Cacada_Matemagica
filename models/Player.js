@@ -12,10 +12,6 @@ export default class Player {
     this.i = 0;
     this.imagePlayer = new Image();
     this.imagePlayer.src = "../assets/personR2.png";
-    // this.widthImage = this.imagePlayer.width;
-    // this.heightImage = this.imagePlayer.height;
-    // this.widthPerson = this.widthImage / 5;
-    // this.heigthPerson = this.heightImage / 2;
   }
 
   getAxesX() {
@@ -31,19 +27,10 @@ export default class Player {
     this.axesY = 70;
   }
 
-
   draw() {
-        this.context.drawImage(
-          this.imagePlayer,
-          (this.i)* (this.imagePlayer.width/5),
-          0,
-          (this.imagePlayer.width/5),
-          this.imagePlayer.height/2,
-          this.axesX,
-          this.axesY,
-          40,
-          60
-        );
+        this.context.drawImage(this.imagePlayer, (this.i)*(this.imagePlayer.width/5),
+          0, (this.imagePlayer.width/5), this.imagePlayer.height/2,this.axesX, this.axesY,
+          40,60);
         
         this.i++;
         if (this.i >= 5) {
@@ -54,14 +41,8 @@ export default class Player {
   update() {
         
     document.addEventListener("keydown", (event) => {
-      switch (event.key) {
-        case " ":
+      if(event.key == " ")
           this.jump();
-          break;
-
-        default:
-          break;
-      }
     });
     
     if (this.jumping) {
@@ -83,15 +64,6 @@ export default class Player {
     }
   }
 
-  move(moviment) {
-    switch (moviment) {
-      case "up":
-        this.axesY -= this.speed;
-        this.jumping = true;
-        break;
-    }
-    this.update();
-  }
   collide(obstacle) {
     if (
       this.axesX + 25 >= obstacle.getAxesX() &&
