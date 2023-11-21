@@ -27,7 +27,7 @@ export default class Game{
 
     writeTexts(){
         this.operationText.innerText = "Qual o resultado da operação " + this.question.writeOperation() + "?";
-        this.pontuationWriter.innerText = "Estoque de respostas matemágicas: " + this.pontuation;
+        this.pontuationWriter.innerText = "Estoque de respostas Matemágicas: " + this.pontuation;
     }
 
     generateIndexValue(){
@@ -90,10 +90,10 @@ export default class Game{
 
         if(this.messageInitial){
             alert("Olá, você veio parar em um mundo mágico, onde você é um caçador matemágico determinado a" +
-            "se tornar um mestre da matemágica, para isso você enfrentará um desafio: caçar 20 respostas matemágicas certas"+
-            "das perguntas matemágicas que irão aparecer durante o percurso. Boa sorte em sua jornada caçador!");
+            "se tornar um mestre da Matemágica, para isso você enfrentará um desafio: caçar 20 respostas Matemágicas certas"+
+            "das perguntas Matemágicas que irão aparecer durante o percurso que você fará em meio a floresta da Matemágica. Boa sorte em sua jornada caçador!");
            
-            alert("Para jogar, aperte a tecla de espaço no teclado para que o caçador possa pular e coletar as respostas matemágicas");
+            alert("Para jogar, aperte a tecla de espaço no teclado para que o caçador possa pular e coletar as respostas Matemágicas");
             this.messageInitial = false;
         }
 
@@ -104,7 +104,7 @@ export default class Game{
                     this.game();
             }, 50);
         }else{
-            alert("Fim de Jogo. Parabéns! Agora você recebeu o título de caçador mestre da matemágica");
+            alert("Fim de Jogo. Parabéns! Agora você recebeu o título de caçador mestre da Matemágica");
         }
     };
     
