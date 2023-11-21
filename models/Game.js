@@ -92,6 +92,8 @@ export default class Game{
             alert("Olá, você veio parar em um mundo mágico, onde você é um caçador matemágico determinado a" +
             "se tornar um mestre da matemágica, para isso você enfrentará um desafio: caçar 20 respostas matemágicas certas"+
             "das perguntas matemágicas que irão aparecer durante o percurso. Boa sorte em sua jornada caçador!");
+           
+            alert("Para jogar, aperte a tecla de espaço no teclado para que o caçador possa pular e coletar as respostas matemágicas");
             this.messageInitial = false;
         }
 

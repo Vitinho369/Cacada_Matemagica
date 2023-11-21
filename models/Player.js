@@ -55,7 +55,7 @@ export default class Player {
         
     document.addEventListener("keydown", (event) => {
       switch (event.key) {
-        case "ArrowUp":
+        case " ":
           this.jump();
           break;
 
