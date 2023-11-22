@@ -1,4 +1,5 @@
 export default class Player {
+
   constructor() {
     this.canvas = document.getElementById("game");
     this.context = this.canvas.getContext("2d");
@@ -22,11 +23,13 @@ export default class Player {
     return this.axesY;
   }
 
+  //Reinicia o personagem em sua posição inicial no jogo
   reinitial() {
     this.axesX = 50;
     this.axesY = 70;
   }
 
+  //Desenha o personagem na tela
   draw() {
         this.context.drawImage(this.imagePlayer, (this.i)*(this.imagePlayer.width/5),
           0, (this.imagePlayer.width/5), this.imagePlayer.height/2,this.axesX, this.axesY,
@@ -38,6 +41,7 @@ export default class Player {
         }
   }
 
+  //Atualiza a tela e busca por eventos para o jogador possa interagir com o jogo
   update() {
         
     document.addEventListener("keydown", (event) => {
@@ -54,9 +58,11 @@ export default class Player {
         this.jump_height = 0;
       }
     }
+
     this.draw();
   }
 
+  //Habilita e desabilita o pulo do perosnagem
   jump() {
     if (!this.jumping) {
       this.jumping = true;
@@ -64,6 +70,7 @@ export default class Player {
     }
   }
 
+  //Verificação a colisão entre os objetos do jogo de acordo com a medida do personagem
   collide(obstacle) {
     if (
       this.axesX + 25 >= obstacle.getAxesX() &&
@@ -71,7 +78,6 @@ export default class Player {
       this.axesY <= 25 &&
       this.axesY + 40 >= 25
     ) {
-      console.log("collide");
       return true;
     }
     return false;

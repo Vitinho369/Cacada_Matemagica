@@ -4,6 +4,7 @@ import Question from "../models/Question.js";
 import Background from "./Background.js";
 
 export default class Game{
+
     constructor(){
         this.player = new Player();
         this.coin = new Coin();
@@ -25,15 +26,20 @@ export default class Game{
         this.messageInitial = true;
     }
 
+    //Função destinada para escrever os textos na tela que serão atualizados conforme o progresso do jogador em suas respostas
     writeTexts(){
-        this.operationText.innerText = "Qual o resultado da operação " + this.question.writeOperation() + "?";
+        this.operationText.innerText = "Qual o resultado da operação " + this.question.getQuestion() + "?";
         this.pontuationWriter.innerText = "Estoque de respostas Matemágicas: " + this.pontuation;
     }
 
-    generateIndexValue(){
+    /*Gera um novo número para que possa se saber quando a moeda contendo a respostas correta 
+    irá aparecer novamente para o usuário de forma aletória*/
+    generateNextCoinValue(){
         return Math.floor(Math.random() * 6);
     };
     
+    /*Reinicia todo o jogo após o jogador colidir com alguma moeda, se a resposta estiver certa, 
+    será aumentada a pontuação e gerada uma nova pergunta*/
     reinitialGame(){
        if(this.question.getResult() == this.coin.getNumber()){
             this.question = new Question();
@@ -50,10 +56,10 @@ export default class Game{
         this.coin.reinitial();
     };
 
-    
+    //Desenha as moedas na tela e promove a sua movimentação (considera a aceleração do jogo)
     drawCoin(){
         if(this.nextCoinValue == 0)
-            this.nextCoinValue = this.generateIndexValue();
+            this.nextCoinValue = this.generateNextCoinValue();
 
         this.coin.setAxesX(this.positionCoin);
         this.coin.setAxesY(10);
@@ -74,7 +80,9 @@ export default class Game{
         this.coin.update();
   };
   
-    game(){
+    /*Função responsável por desenhar todos os elementos na tela do jogo,
+    verificar a colisão e executar a função de reiniciar o jogo*/
+    drawGame(){
         this.nextValue = this.player.collide(this.coin);
     
         if (this.nextValue){
@@ -86,6 +94,8 @@ export default class Game{
             this.player.update();
     };
 
+    /*Função principal do jogo, onde será mostrada as mensagens iniciais de instrução do jogo, bem como a mensagem 
+    final apresentada no seu fim. Além de gerenicar a pontuação máxima e os elementos desenhados na tela do jogo*/
     runGame(){ 
 
         if(this.messageInitial){
@@ -101,7 +111,7 @@ export default class Game{
             setTimeout(() => {
                 this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
                     this.runGame();
-                    this.game();
+                    this.drawGame();
             }, 50);
         }else{
             alert("Fim de Jogo. Parabéns! Agora você recebeu o título de caçador mestre da Matemágica");

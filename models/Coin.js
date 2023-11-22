@@ -1,4 +1,5 @@
 export default class Coin {
+
   constructor() {
     this.canvas = document.getElementById("game");
     this.context = this.canvas.getContext("2d");
@@ -36,6 +37,7 @@ export default class Coin {
     return this.axesY;
   }
 
+  //Define o eixo X da moeda e do texto que ela guarda
   setAxesX(axesX) {
     this.axesX = axesX;
     this.textX = axesX;
@@ -51,11 +53,13 @@ export default class Coin {
     this.textY = textY;
   }
 
+  //Reinicia a moeda em sua posição inicial
   reinitial(){
     this.axesX = 0;
     this.axesY = 70;
   }
 
+  //Desenha a moeda e o texto que é contido dentro dela
   draw() {  
     this.context.drawImage(this.image, 0,0, 226, 216, this.axesX,this.axesY, this.width,this.height);
     this.context.fillStyle = "white";
@@ -68,6 +72,7 @@ export default class Coin {
       this.context.fillText(this.number, this.textX+5,32);
   }
 
+  //Atualiza a tela
   update() {
     this.draw();
   }
